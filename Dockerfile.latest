@@ -1,0 +1,29 @@
+# syntax=docker/dockerfile:1.4
+FROM ghcr.io/1186258278/openclaw-zh:latest
+
+LABEL maintainer="your-name"
+LABEL description="OpenClaw custom image for Docker"
+
+ENV TZ=Asia/Shanghai
+ENV NODE_COMPILE_CACHE=/tmp/openclaw-cache
+ENV OPENCLAW_NO_RESPAWN=1
+ENV CHROME_BIN=/usr/bin/chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    unzip \
+    jq \
+    ffmpeg \
+    python3 \
+    python3-pip \
+    build-essential \
+    locales \
+    gh \
+    && rm -rf /var/lib/apt/lists/* /tmp/*
+
+RUN npm install -g clawhub
+
+WORKDIR /app
