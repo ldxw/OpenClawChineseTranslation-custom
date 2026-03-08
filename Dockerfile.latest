@@ -19,6 +19,11 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     build-essential \
     locales \
     gh \
+    fontconfig \
+    fonts-noto-cjk \
+    fonts-noto-color-emoji \
+    fonts-wqy-zenhei \
+    && fc-cache -fv \
     && rm -rf /var/lib/apt/lists/* /tmp/*
 
 RUN npm install -g clawhub
