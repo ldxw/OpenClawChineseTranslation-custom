@@ -18,6 +18,10 @@ jobs:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
 
+      - name: 生成日期标签
+        id: date
+        run: echo "value=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+
       - name: 设置 QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -60,6 +64,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ github.repository_owner }}/openclaw-zh-custom:latest
+            ghcr.io/${{ github.repository_owner }}/openclaw-zh-custom:${{ steps.date.outputs.value }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
