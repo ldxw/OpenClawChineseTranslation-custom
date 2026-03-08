@@ -1,9 +1,6 @@
 # syntax=docker/dockerfile:1.4
 FROM ghcr.io/1186258278/openclaw-zh:latest
 
-LABEL maintainer="your-name"
-LABEL description="OpenClaw custom image for Docker"
-
 ENV TZ=Asia/Shanghai
 ENV NODE_COMPILE_CACHE=/tmp/openclaw-cache
 ENV OPENCLAW_NO_RESPAWN=1
