@@ -21,6 +21,7 @@
 services:
   openclaw:
     image: ghcr.io/ldxw/openclaw-zh-custom:latest
+    # image: registry.cn-hangzhou.aliyuncs.com/ldxw/openclaw-zh-custom:latest
     container_name: openclaw
     volumes:
       - openclaw-data:/root/.openclaw
