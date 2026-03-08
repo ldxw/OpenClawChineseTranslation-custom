@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     command: openclaw gateway run --allow-unconfigured
     healthcheck:
-      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:18789/ || exit 1"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:18789/health", "||", "exit", "0"]
       interval: 30s
       timeout: 10s
       retries: 3
