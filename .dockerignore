@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+.github
+
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OpenClaw data
+openclaw-data
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs
+*.log
+
+# Cache / temp
+.cache
+tmp
+temp
+*.tmp
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
