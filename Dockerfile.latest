@@ -2,7 +2,7 @@
 FROM ghcr.io/1186258278/openclaw-zh:latest
 
 ENV TZ=Asia/Shanghai
-ENV NODE_COMPILE_CACHE=/tmp/openclaw-cache
+ENV NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
 ENV OPENCLAW_NO_RESPAWN=1
 ENV CHROME_BIN=/usr/bin/chromium
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
@@ -27,5 +27,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     && rm -rf /var/lib/apt/lists/* /tmp/*
 
 RUN npm install -g clawhub
+RUN mkdir -p /var/tmp/openclaw-compile-cache
 
 WORKDIR /app
