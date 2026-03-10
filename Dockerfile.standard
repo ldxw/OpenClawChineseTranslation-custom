@@ -33,8 +33,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # 安装标准版常用 Python 组件
 # faster-whisper：轻量本地 STT
 # edge-tts：轻量 TTS
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && python3 -m pip install --no-cache-dir \
+RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pip setuptools wheel \
+    && python3 -m pip install --break-system-packages --no-cache-dir \
     faster-whisper \
     edge-tts
 
