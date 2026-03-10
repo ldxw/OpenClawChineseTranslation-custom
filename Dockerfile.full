@@ -55,8 +55,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # openai-whisper：官方本地 Whisper
 # faster-whisper：更轻量的本地 STT
 # edge-tts：轻量 TTS
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && python3 -m pip install --no-cache-dir \
+RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pip setuptools wheel \
+    && python3 -m pip install --break-system-packages --no-cache-dir \
     openai-whisper \
     faster-whisper \
     edge-tts
