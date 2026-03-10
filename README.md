@@ -183,3 +183,5 @@
 - 底包已经自带健康检查，派生镜像无需重复写入。
 - low 版本更适合低配机器，建议语音识别走 API。
 - full 版本更适合本地 STT、浏览器自动化和完整技能生态。
+
+- 纯本地语音识别可配合： [OpenClaw-local-stt-adapter](https://github.com/ldxw/OpenClaw-local-stt-adapter)  使用。
