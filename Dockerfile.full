@@ -59,9 +59,8 @@ RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pip 
     && python3 -m pip install --break-system-packages --no-cache-dir \
     openai-whisper \
     faster-whisper \
-    edge-tts
-
-RUN npm install -g clawhub
+    edge-tts \
+    && npm install -g clawhub pnpm
 
 # 刷新字体缓存
 RUN fc-cache -fv
