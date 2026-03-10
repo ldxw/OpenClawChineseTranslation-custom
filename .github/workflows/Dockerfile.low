@@ -1,0 +1,28 @@
+# 基于 OpenClaw 中文版底包
+FROM ghcr.io/1186258278/openclaw-zh:latest
+
+# 使用 root 用户安装依赖
+USER root
+
+# OpenClaw 运行优化：
+# 1. 使用 /var/tmp 保存编译缓存，避免 /tmp 丢失
+# 2. 禁用 respawn，低配机更稳
+ENV NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
+ENV OPENCLAW_NO_RESPAWN=1
+
+# 创建编译缓存目录
+RUN mkdir -p /var/tmp/openclaw-compile-cache
+
+# 安装低配版所需最小依赖
+# ffmpeg：语音/音频处理必备
+# python3/python3-pip：为 edge-tts 等 Python 工具做准备
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装轻量 TTS
+# 低配机推荐只装 edge-tts，不装 whisper
+RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && python3 -m pip install --no-cache-dir edge-tts
