@@ -7,6 +7,7 @@ USER root
 # OpenClaw 运行优化
 ENV NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
 ENV OPENCLAW_NO_RESPAWN=1
+ENV TZ=Asia/Shanghai
 
 # Chromium 路径显式声明
 # 底包已经装了 chromium，这里只是补充环境变量
