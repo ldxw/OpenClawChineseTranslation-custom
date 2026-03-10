@@ -7,6 +7,7 @@ USER root
 # OpenClaw 运行优化
 ENV NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
 ENV OPENCLAW_NO_RESPAWN=1
+ENV TZ=Asia/Shanghai
 
 # 创建编译缓存目录
 RUN mkdir -p /var/tmp/openclaw-compile-cache
