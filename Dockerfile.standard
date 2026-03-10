@@ -17,6 +17,8 @@ RUN mkdir -p /var/tmp/openclaw-compile-cache
 # poppler-utils：PDF 处理类技能常用
 # libglib2.0-0：部分截图/多媒体技能常用依赖
 # fonts-*：中文与 emoji 显示支持
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     python3 \
@@ -27,6 +29,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-noto-color-emoji \
     fonts-wqy-zenhei \
     jq \
+    gh \
+    build-essential \
+    locales \
     qrencode \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,9 +41,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pip setuptools wheel \
     && python3 -m pip install --break-system-packages --no-cache-dir \
     faster-whisper \
-    edge-tts
-
-RUN npm install -g clawhub
+    edge-tts \
+    && npm install -g clawhub pnpm
 
 # 刷新字体缓存，避免中文字体不生效
 RUN fc-cache -fv
