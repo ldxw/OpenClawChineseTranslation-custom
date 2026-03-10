@@ -24,5 +24,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # 安装轻量 TTS
 # 低配机推荐只装 edge-tts，不装 whisper
-RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && python3 -m pip install --no-cache-dir edge-tts
+RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pip setuptools wheel \
+    && python3 -m pip install --break-system-packages --no-cache-dir edge-tts
