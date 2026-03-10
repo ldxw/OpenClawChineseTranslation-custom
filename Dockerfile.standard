@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-noto-cjk \
     fonts-noto-color-emoji \
     fonts-wqy-zenhei \
+    jq \
+    qrencode \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装标准版常用 Python 组件
@@ -35,6 +37,8 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
     && python3 -m pip install --no-cache-dir \
     faster-whisper \
     edge-tts
+
+RUN npm install -g clawhub
 
 # 刷新字体缓存，避免中文字体不生效
 RUN fc-cache -fv
